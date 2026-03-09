@@ -1,0 +1,59 @@
+# config/locales/avo.pt-BR.yml
+pt-BR:
+  avo:
+    field_translations:
+      price_cents:
+        one: 'preço da consulta'
+    resource_translations:
+      user:
+        zero: 'usuários'
+        one: 'usuário'
+        other: 'usuários'
+      address:
+        zero: 'endereços'
+        one: 'endereço'
+        other: 'endereços'
+      work_area:
+        zero: 'conselhos regionais'
+        one: 'conselho regional'
+        other: 'conselhos regionais'
+      work_specialty:
+        zero: 'especialidades'
+        one: 'especialidade'
+        other: 'especialidades'
+      contacting_user:
+        zero: 'contatos de usuários'
+        one: 'contato de usuário'
+        other: 'contatos de usuários'
+      doctor:
+        zero: 'profissionais da saúde'
+        one: 'profissional da saúde'
+        other: 'profissionais da saúde'
+      inbound_webhook:
+        zero: 'webhooks recebidos'
+        one: 'webhook recebido'
+        other: 'webhooks recebidos'
+      budget:
+        zero: 'Orçamentos de Exames'
+        one: 'orçamentos de exame'
+        other: 'Orçamentos de Exames'
+      review:
+        zero: 'avaliações'
+        one: 'Avaliação'
+        other: 'avaliações'
+      doctor_availability:
+        zero: 'disponibilidades dos profissionais'
+        one: 'disponibilidade dos profissional'
+        other: 'disponibilidades dos profissionais'
+      appointment:
+        zero: 'consultas'
+        one: 'consulta'
+        other: 'consultas'
+      patient:
+        zero: 'pacientes'
+        one: 'paciente'
+        other: 'pacientes'
+      clinic:
+        zero: 'clínicas'
+        one: 'clínica'
+        other: 'clínicas'

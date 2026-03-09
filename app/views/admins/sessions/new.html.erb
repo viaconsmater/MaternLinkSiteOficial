@@ -1,0 +1,50 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: "#f2fcf9",
+              100: "#e6faf3",
+              200: "#bff1e2",
+              300: "#99e9d1",
+              400: "#4dd9ae",
+              500: "#00c88b",
+              600: "#00b47d",
+              700: "#009668",
+              800: "#007853",
+              900: "#006244",
+            },
+          }
+        }
+      }
+    }
+  </script>
+<div class="bg-gray-50 dark:bg-gray-900">
+  <div class="flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900">
+    <!-- Card -->
+    <div class="w-full max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow dark:bg-gray-800">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+        Painel Admnistrativo
+      </h2>
+      <%= form_with(url: admins_login_path, class: "mt-8 space-y-6", turbo: false) do |f| %>
+        <div>
+          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+          <%= f.email_field :email, autocomplete: "email", placeholder: "email@email.com", class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500", required: true %>
+        </div>
+        <div>
+          <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white pt-3">Sua
+            senha</label>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "••••••••", class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500", required: true %>
+        </div>
+
+        <button type="submit" class="w-full mt-5 px-5 py-3 text-base font-medium text-center bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+          Login
+        </button>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+

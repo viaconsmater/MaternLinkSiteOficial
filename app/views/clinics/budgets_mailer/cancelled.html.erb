@@ -1,0 +1,17 @@
+<p>Olá <%= @clinic.name %>,</p>
+
+<p>
+    Informamos que o orçamento solicitado pelo usuário <%= @budget.user.name %> foi cancelado.
+</p>
+<p>
+   Você pode acessar mais detalhes e acompanhar o status desse orçamento clicando no link abaixo:
+</p>
+
+<p>
+    <a href="<%= edit_clinics_exams_budget_url(@budget.id) %>">
+        Ver Orçamento Cancelado
+    </a>
+</p>
+
+<p>Atenciosamente,</p>
+<p>Equipe Via Consultas</p>

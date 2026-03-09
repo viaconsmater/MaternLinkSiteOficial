@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>Matern Link</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="A plataforma comprometida em revolucionar o acesso à saúde">
+    <meta name="keywords" content="maternlink", consultas, exames">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+
+    <meta property="og:url" content="https://maternlink.com.br/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="maternlink">
+    <meta property="og:description" content="Uma plataforma comprometida em revolucionar o acesso à saúde">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= vite_react_refresh_tag %>
+
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application' %>
+    <!--
+      If using a TypeScript entrypoint file:
+        vite_typescript_tag 'application'
+
+      If using a .jsx or .tsx entrypoint, add the extension:
+        vite_javascript_tag 'application.jsx'
+
+      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
+    -->
+
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        RAILS_ENV: production
+    container_name: viaconsultas-app
+    environment:
+      RAILS_ENV: production
+      DATABASE_URL: ${DATABASE_URL}
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY}
+      SENDGRID_SENDER_EMAIL: ${SENDGRID_SENDER_EMAIL}
+      PAYMENT_API_KEY: ${PAYMENT_API_KEY}
+      PAYMENT_API_URL: ${PAYMENT_API_URL}
+      HOST: ${HOST}
+    command: >
+      bash -c "
+      bundle exec rails db:migrate &&
+      bundle exec rails assets:precompile &&
+      bundle exec puma -t 5:5 -p 3000 -b '0.0.0.0'
+      "
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/var/www/core
+    restart: unless-stopped
+    networks:
+      - viaconsultas-network
+
+  redis:
+    image: "redis:7-alpine"
+    container_name: viaconsultas-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    networks:
+      - viaconsultas-network
+
+networks:
+  viaconsultas-network:
+    driver: bridge
+
+volumes:
+  redis-data:

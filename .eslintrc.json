@@ -1,0 +1,60 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:tailwindcss/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "tsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "react-hooks",
+    "react-refresh",
+    "prettier",
+    "simple-import-sort"
+  ],
+  "rules": {
+    "no-duplicate-imports": "error",
+    "react/react-in-jsx-scope": "off",
+    "no-console": "error",
+    "no-alert": "off",
+    "react/prop-types": 0,
+    "react/display-name": 0,
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "react/no-unknown-property": "off",
+    "react/no-unescaped-entities ": "off",
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ],
+    "tailwindcss/no-custom-classname": [
+      "off"
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    },
+    "react": {
+      "pragma": "React",
+      // Pragma to use, default to "React"
+      "version": "detect"
+      // React version. "detect" automatically picks the version you have installed.
+    }
+  }
+}

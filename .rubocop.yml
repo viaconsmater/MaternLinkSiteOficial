@@ -1,0 +1,23 @@
+inherit_gem:
+  action_policy: config/rubocop-rspec.yml
+  switchcop: rubocop.yml
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 3
+
+RSpec/ExampleLength:
+  Max: 25
+  Exclude:
+    - spec/system/**/*
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 7
+
+Capybara/ClickLinkOrButtonStyle:
+  Enabled: false

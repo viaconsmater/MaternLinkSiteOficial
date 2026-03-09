@@ -1,0 +1,22 @@
+export const mockData = {
+  name: "",
+  cellphone: "",
+  email: "",
+  password: "",
+  cpf: "",
+  gender: "",
+  birthdate: "",
+  council: "",
+  work: "",
+  specialist: "",
+  address_attributes: {
+    cep: "",
+    city: "",
+    state: "",
+    neighborhood: "",
+    street: "",
+    number: "",
+    latitude: "",
+    longitude: "",
+  },
+};

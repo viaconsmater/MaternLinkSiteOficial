@@ -1,0 +1,15 @@
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+digital_ocean:
+  service: S3
+  bucket: viaconsultas
+  region: unused
+  endpoint: <%= Rails.application.credentials.dig(:digital_ocean, :endpoint) %>
+  access_key_id: <%= Rails.application.credentials.dig(:digital_ocean, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:digital_ocean, :secret_access_key) %>

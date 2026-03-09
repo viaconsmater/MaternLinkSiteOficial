@@ -1,0 +1,12 @@
+<p>Olá <%= @user.name %>,</p>
+
+<p>Seu exame foi enviado com sucesso para as clínicas selecionadas.</p>
+
+<p><strong>Data de envio:</strong> <%= @budget.sent_at %></p>
+
+<p>Para acompanhar o status, você pode acessar sua plataforma de consultas através do link abaixo:</p>
+
+<p><a href="<%= exams_budget_url(@budget.id) %>">Ver na Plataforma</a></p>
+
+<p>Atenciosamente,</p>
+<p>Equipe Via Consultas</p>

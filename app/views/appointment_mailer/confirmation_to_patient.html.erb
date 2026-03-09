@@ -1,0 +1,15 @@
+<h1>Consulta Confirmada</h1>
+
+<p>Prezado(a) Paciente,</p>
+
+<p>É com prazer que confirmamos sua consulta. Aqui estão os detalhes:</p>
+
+<p><strong>Data:</strong> <%= @appointment.date.strftime("%d/%m/%Y às %H:%M") %></p>
+<p><strong>Médico:</strong> <%= @appointment.doctor.user.name %></p>
+
+<p>Por favor, chegue com 15 minutos de antecedência e traga os documentos necessários.</p>
+
+<p>Estamos ansiosos para atendê-lo e contribuir para o seu bem-estar.</p>
+
+<p>Atenciosamente,</p>
+<p>A equipe da Matern Link</p>

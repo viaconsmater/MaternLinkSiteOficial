@@ -1,0 +1,204 @@
+pt-BR:
+  action_policy:
+    unauthorized: "Você não possui acesso à esse recurso."
+  activerecord:
+    attributes:
+      user:
+        name: 'Nome'
+        email: 'E-mail'
+        password: 'Senha'
+        phone: 'Número de Telefone'
+        state: 'Estado'
+        city: 'Cidade'
+        street: 'Logradouro'
+        neighborhood: 'Bairro'
+        number: 'Número'
+    errors:
+      messages:
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Não é possível excluir o registro pois existe um %{record} dependente
+          has_many: Não é possível excluir o registro pois existem %{record} dependentes
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d de %B"
+  date:
+    month_names:
+      - janeiro
+      - fevereiro
+      - março
+      - abril
+      - maio
+      - junho
+      - julho
+      - agosto
+      - setembro
+      - outubro
+      - novembro
+      - dezembro
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: aproximadamente 1 hora
+        other: aproximadamente %{count} horas
+      about_x_months:
+        one: aproximadamente 1 mês
+        other: aproximadamente %{count} meses
+      about_x_years:
+        one: aproximadamente 1 ano
+        other: aproximadamente %{count} anos
+      almost_x_years:
+        one: quase 1 ano
+        other: quase %{count} anos
+      half_a_minute: meio minuto
+      less_than_x_seconds:
+        one: menos de 1 segundo
+        other: menos de %{count} segundos
+      less_than_x_minutes:
+        one: menos de um minuto
+        other: menos de %{count} minutos
+      over_x_years:
+        one: mais de 1 ano
+        other: mais de %{count} anos
+      x_seconds:
+        one: 1 segundo
+        other: "%{count} segundos"
+      x_minutes:
+        one: 1 minuto
+        other: "%{count} minutos"
+      x_horas:
+        one: 1 hora
+        other: "%{count} horas"
+      x_days:
+        one: 1 dia
+        other: "%{count} dias"
+      x_months:
+        one: 1 mês
+        other: "%{count} meses"
+      x_years:
+        one: 1 ano
+        other: "%{count} anos"
+      short:
+        about_x_hours: "%{count} h"
+        about_x_months: "%{count} m"
+        about_x_years: "%{count} a"
+        almost_x_years: "%{count} a"
+        half_a_minute: 30 s
+        less_than_x_seconds: "< %{count} s"
+        less_than_x_minutes: "< %{count} min"
+        over_x_years: "> %{count}a"
+        x_seconds: "%{count} s"
+        x_minutes: "%{count} min"
+        x_horas: "%{count} h"
+        x_days: "%{count} d"
+        x_months: "%{count} m"
+        x_years: "%{count} a"
+    prompts:
+      second: Segundo
+      minute: Minuto
+      hour: Hora
+      day: Dia
+      month: Mês
+      year: Ano
+    dotiw:
+      seconds:
+        one: 1 segundo
+        other: "%{count} segundos"
+      minutes:
+        one: 1 minuto
+        other: "%{count} minutos"
+      hours:
+        one: 1 hora
+        other: "%{count} horas"
+      days:
+        one: 1 dia
+        other: "%{count} dias"
+      months:
+        one: 1 mês
+        other: "%{count} meses"
+      weeks:
+        one: 1 semana
+        other: "%{count} semanas"
+      years:
+        one: 1 ano
+        other: "%{count} anos"
+  pagy:
+    item_name:
+      one: "item"
+      other: "itens"
+    nav:
+      prev: "&lsaquo;&nbsp;Ant"
+      next: "Próx&nbsp;&rsaquo;"
+      gap: "&hellip;"
+    info:
+      no_items: "Sem resultados"
+      single_page: "Mostrando %{count} %{item_name}"
+      multiple_pages: "Mostrando %{item_name} %{from}-%{to} do total de %{count}"
+    combo_nav_js: "Página %{page_input} de %{pages}"
+    items_selector_js: "Mostrar %{items_input} %{item_name} por página"
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: deve ser aceito
+      blank: não pode ficar em branco
+      confirmation: não é igual a %{attribute}
+      empty: não pode ficar vazio
+      equal_to: deve ser igual a %{count}
+      even: deve ser par
+      exclusion: não está disponível
+      greater_than: deve ser maior que %{count}
+      greater_than_or_equal_to: deve ser maior ou igual a %{count}
+      inclusion: não está incluído na lista
+      invalid: não é válido
+      less_than: deve ser menor que %{count}
+      less_than_or_equal_to: deve ser menor ou igual a %{count}
+      model_invalid: 'A validação falhou: %{errors}'
+      not_a_number: não é um número
+      not_an_integer: não é um número inteiro
+      odd: deve ser ímpar
+      other_than: deve ser diferente de %{count}
+      present: deve ficar em branco
+      required: é obrigatório(a)
+      taken: já está em uso
+      too_long:
+        one: 'é muito longo (máximo: 1 caracter)'
+        other: 'é muito longo (máximo: %{count} caracteres)'
+      too_short:
+        one: 'é muito curto (mínimo: 1 caracter)'
+        other: 'é muito curto (mínimo: %{count} caracteres)'
+      wrong_length:
+        one: não possui o tamanho esperado (1 caracter)
+        other: não possui o tamanho esperado (%{count} caracteres)
+    template:
+      body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
+      header:
+        one: 'Não foi possível gravar %{model}: 1 erro'
+        other: 'Não foi possível gravar %{model}: %{count} erros'
+  helpers:
+    select:
+      prompt: Por favor selecione
+    submit:
+      create: Criar %{model}
+      submit: Salvar %{model}
+      update: Atualizar %{model}
+  support:
+    array:
+      last_word_connector: " e "
+      two_words_connector: " e "
+      words_connector: ", "
+  time:
+    am: ''
+    formats:
+      default: "%a, %d de %B de %Y, %H:%M:%S %z"
+      long: "%d de %B de %Y, %H:%M"
+      short: "%d de %B, %H:%M"
+    pm: ''
+  number:
+    currency:
+      format:
+        unit: 'R$'
+        delimiter: '.'
+        separator: ','
+        precision: 2
+        format: '%u%n'

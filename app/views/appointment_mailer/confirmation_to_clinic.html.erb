@@ -1,0 +1,17 @@
+<h1>Consulta Confirmada pelo Paciente</h1>
+
+<p>Prezada Clínica.,</p>
+
+<p>É com satisfação que informamos que sua consulta foi confirmada pelo paciente. Abaixo estão os detalhes:</p>
+
+<p><strong>Data:</strong> <%= @appointment.date.strftime("%d/%m/%Y às %H:%M") %></p>
+<p><strong>Paciente:</strong> <%= @appointment.patient.user.name %></p>
+<p><strong>Doutor:</strong> <%= @appointment.doctor.user.name %></p>
+
+<p>Recomendamos checar a plataforma para mais informações e preparativos necessários.</p>
+
+<p>Agradecemos sua dedicação e compromisso em oferecer o melhor cuidado aos seus pacientes. Estamos aqui para apoiá-lo
+  em todas as suas necessidades.</p>
+
+<p>Atenciosamente,</p>
+<p>A equipe da Matern Link</p>
