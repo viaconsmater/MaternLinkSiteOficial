@@ -92,7 +92,7 @@ const EditProfile = ({ user, data, setData, areaOptions, clinic }) => {
   const [specialtyOptions, setSpecialtyOptions] = useState([]);
 
   const getCoordinates = async () => {
-    const apiKey = "AIzaSyAoLzTfDNeO5ZBNk8yyvZ6p5CJnWPKM8LU";
+    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${data.address_attributes.cep}&key=${apiKey}`;
   
     setLoading(true);

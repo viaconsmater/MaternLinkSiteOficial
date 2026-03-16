@@ -126,7 +126,7 @@ export const fetchCep = async (data, setData, setError, setLoading) => {
       if (response.data.erro) {
         setError(true);
       } else {
-        const apiKey = "AIzaSyAoLzTfDNeO5ZBNk8yyvZ6p5CJnWPKM8LU";
+        const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
         const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${data.address_attributes.cep}&key=${apiKey}`;
         const responseCoord = await axios.get(url);
         const responseData = responseCoord.data;
