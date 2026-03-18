@@ -27,7 +27,7 @@ RUN apt-get update -qq && \
 # =========================
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs && \
-    npm install -g yarn vitepress
+    npm install -g yarn
 
 # =========================
 # 🔧 Stage 2 - Build
@@ -36,7 +36,8 @@ FROM base AS build
 
 # Recebe a master key como build arg
 ARG RAILS_MASTER_KEY
-ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY \
+    PATH="/var/www/core/node_modules/.bin:$PATH"
 
 # Instala bundler correto
 RUN gem install bundler -v $BUNDLER_VERSION
