@@ -54,8 +54,9 @@ RUN bundle install && \
 # Copia projeto
 COPY . .
 
-# Instala dependências JS antes do precompile
-RUN yarn install --frozen-lockfile || yarn install
+# Instala dependências JS e cria symlink do vitepress para /usr/local/bin
+RUN yarn install --frozen-lockfile || yarn install && \
+    ln -sf /var/www/core/node_modules/.bin/vitepress /usr/local/bin/vitepress
 
 # Precompile com SECRET_KEY_BASE dummy e RAILS_MASTER_KEY real
 RUN SECRET_KEY_BASE=dummy bundle exec rails assets:precompile
