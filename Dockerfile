@@ -9,7 +9,8 @@ WORKDIR /var/www/core
 ENV RAILS_ENV=production \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLER_VERSION=2.4.10 \
-    NODE_ENV=production
+    NODE_ENV=production \
+    PATH="/var/www/core/node_modules/.bin:$PATH"
 
 # Dependências
 RUN apt-get update -qq && \
