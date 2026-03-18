@@ -11,7 +11,7 @@ ENV RAILS_ENV=production \
     BUNDLER_VERSION=2.4.10 \
     NODE_ENV=production
 
-# Dependências
+# Dependências do sistema
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
     curl \
@@ -20,29 +20,28 @@ RUN apt-get update -qq && \
     git \
     pkg-config \
     libvips \
-    postgresql-client
+    postgresql-client && \
+    rm -rf /var/lib/apt/lists/*
 
-# =========================
-# 📦 Node + Yarn
-# =========================
+# Node + Yarn
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs && \
-    npm install -g yarn
+    npm install -g yarn && \
+    rm -rf /var/lib/apt/lists/*
 
 # =========================
-# 🔧 Stage 2 - Build
+# 📦 Stage 2 - Build
 # =========================
 FROM base AS build
 
-# Recebe a master key como build arg
 ARG RAILS_MASTER_KEY
 ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY \
     PATH="/var/www/core/node_modules/.bin:$PATH"
 
-# Instala bundler correto
+# Instala bundler
 RUN gem install bundler -v $BUNDLER_VERSION
 
-# Copia Gemfile primeiro (cache)
+# Copia Gemfile primeiro para aproveitar cache
 COPY Gemfile Gemfile.lock ./
 
 # Instala gems
@@ -51,17 +50,23 @@ RUN bundle install && \
     ${BUNDLE_PATH}/ruby/*/cache \
     ${BUNDLE_PATH}/ruby/*/bundler/gems/*/.git
 
-# Copia projeto
+# Copia package.json e yarn.lock primeiro para aproveitar cache
+COPY package.json yarn.lock ./
+
+# Instala dependências JS
+RUN yarn install --frozen-lockfile
+
+# Cria symlink para o vitepress instalado pelo yarn
+RUN ln -sf /var/www/core/node_modules/.bin/vitepress /usr/local/bin/vitepress
+
+# Copia o restante do projeto
 COPY . .
 
-# Instala dependências JS e cria wrapper executável para vitepress
-RUN yarn install --frozen-lockfile || yarn install
-RUN VITEPRESS_BIN=$(find /var/www/core/node_modules/vitepress/bin -name "vitepress*" | head -1) && \
-    printf "#!/bin/sh\nexec node $VITEPRESS_BIN \"\$@\"\n" > /usr/local/bin/vitepress && \
-    chmod +x /usr/local/bin/vitepress
-
-# Precompile com SECRET_KEY_BASE dummy e RAILS_MASTER_KEY real
+# Precompile assets
 RUN SECRET_KEY_BASE=dummy bundle exec rails assets:precompile
+
+# Remove arquivos desnecessários do build
+RUN rm -rf node_modules/.cache tmp/cache
 
 # =========================
 # 🚀 Stage 3 - Final
