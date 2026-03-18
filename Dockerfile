@@ -34,6 +34,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
 # =========================
 FROM base AS build
 
+# Recebe a master key como build arg
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY
+
 # Instala bundler correto
 RUN gem install bundler -v $BUNDLER_VERSION
 
@@ -49,7 +53,7 @@ RUN bundle install && \
 # Copia projeto
 COPY . .
 
-# 🔥 CORREÇÃO PRINCIPAL AQUI
+# Precompile com SECRET_KEY_BASE dummy e RAILS_MASTER_KEY real
 RUN SECRET_KEY_BASE=dummy bundle exec rails assets:precompile
 
 # =========================
