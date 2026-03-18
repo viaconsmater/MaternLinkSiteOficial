@@ -56,7 +56,8 @@ COPY . .
 
 # Instala dependências JS e cria wrapper executável para vitepress
 RUN yarn install --frozen-lockfile || yarn install
-RUN printf '#!/bin/sh\nexec /var/www/core/node_modules/.bin/vitepress "$@"\n' > /usr/local/bin/vitepress && \
+RUN VITEPRESS_BIN=$(find /var/www/core/node_modules/vitepress/bin -name "vitepress*" | head -1) && \
+    printf "#!/bin/sh\nexec node $VITEPRESS_BIN \"\$@\"\n" > /usr/local/bin/vitepress && \
     chmod +x /usr/local/bin/vitepress
 
 # Precompile com SECRET_KEY_BASE dummy e RAILS_MASTER_KEY real
