@@ -13,13 +13,7 @@ ENV RAILS_ENV=production \
 
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
-    curl \
-    build-essential \
-    libpq-dev \
-    git \
-    pkg-config \
-    libvips \
-    postgresql-client && \
+    curl build-essential libpq-dev git pkg-config libvips postgresql-client && \
     rm -rf /var/lib/apt/lists/*
 
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
@@ -33,13 +27,11 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
 FROM base AS build
 
 ARG RAILS_MASTER_KEY
-ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY \
-    PATH="/var/www/core/node_modules/.bin:$PATH"
+ENV RAILS_MASTER_KEY=$RAILS_MASTER_KEY
 
 RUN gem install bundler -v $BUNDLER_VERSION
 
 COPY Gemfile Gemfile.lock ./
-
 RUN bundle install && \
     rm -rf ~/.bundle \
     ${BUNDLE_PATH}/ruby/*/cache \
@@ -47,19 +39,16 @@ RUN bundle install && \
 
 COPY package.json yarn.lock ./
 
-RUN yarn install --frozen-lockfile
+# NODE_ENV=development para instalar devDependencies (vitepress está lá)
+RUN NODE_ENV=development yarn install --frozen-lockfile
 
-# Copia o projeto ANTES de criar o wrapper
 COPY . .
 
-# Cria wrapper real em vez de symlink — garante que funciona mesmo
-# quando bundle exec redefine o PATH
-RUN VITEPRESS_PATH="/var/www/core/node_modules/.bin/vitepress" && \
-    test -f "$VITEPRESS_PATH" || (echo "ERRO: vitepress não encontrado em node_modules/.bin" && exit 1) && \
-    printf '#!/bin/sh\nexec "%s" "$@"\n' "$VITEPRESS_PATH" > /usr/local/bin/vitepress && \
+# Cria wrapper com caminho absoluto para o vitepress
+RUN printf '#!/bin/sh\nexec /var/www/core/node_modules/.bin/vitepress "$@"\n' > /usr/local/bin/vitepress && \
     chmod +x /usr/local/bin/vitepress
 
-# Precompile com PATH explícito para garantir
+# Precompile com PATH explícito
 RUN export PATH="/var/www/core/node_modules/.bin:/usr/local/bin:$PATH" && \
     SECRET_KEY_BASE=dummy bundle exec rails assets:precompile
 
