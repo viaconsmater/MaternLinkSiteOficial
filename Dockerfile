@@ -9,8 +9,7 @@ WORKDIR /var/www/core
 ENV RAILS_ENV=production \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLER_VERSION=2.4.10 \
-    NODE_ENV=production \
-    PATH="/var/www/core/node_modules/.bin:$PATH"
+    NODE_ENV=production
 
 # Dependências
 RUN apt-get update -qq && \
@@ -28,7 +27,7 @@ RUN apt-get update -qq && \
 # =========================
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs && \
-    npm install -g yarn
+    npm install -g yarn vitepress
 
 # =========================
 # 🔧 Stage 2 - Build
