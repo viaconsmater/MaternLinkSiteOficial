@@ -105,7 +105,8 @@ Rails.application.configure do
   config.hosts = [
     "viaconsultas.com.br",
     "www.viaconsultas.com.br",
-    /.*\.viaconsultas\.com\.br/
+    /.*\.viaconsultas\.com\.br/,
+    /.*\.ondigitalocean\.app/    # ← adicionar esta linha
   ]
   # Skip DNS rebinding protection for the default health check endpoint.
   config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
