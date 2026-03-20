@@ -105,6 +105,10 @@ Rails.application.configure do
   config.hosts = [
     "viaconsultas.com.br",
     "www.viaconsultas.com.br",
+    "maternlink.com",
+    "www.maternlink.com",
+    "maternlink.com.br",
+    "www.maternlink.com.br",
     /.*\.viaconsultas\.com\.br/,
     /.*\.ondigitalocean\.app/    # ← adicionar esta linha
   ]
